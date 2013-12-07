@@ -6,15 +6,16 @@ var arduinoio = require("./lib/arduino-io");
 
 var arduinoSerial = new arduinoio.ArduinoSerial();
 
-var socket = null
-var sockets = [];
-  io.sockets.on('connection', function (socket) {
-    sockets.push(socket);
-});
+//var socket = null
+//var sockets = [];
+  //io.sockets.on('connection', function (socket) {
+    //sockets.push(socket);
+//});
 
 arduinoSerial.listener(function (message) {
+  console.log('recieved message from arduino');
   for (var i = 0 ; i < sockets.length; i++) {
-    sockets[i].emit('message', {message: message});
+    //sockets[i].emit('message', {message: message});
   }
 });
 
